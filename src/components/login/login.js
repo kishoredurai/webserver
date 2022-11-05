@@ -1,4 +1,4 @@
-import React, {  useEffect } from 'react'
+import {  useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { gapi } from 'gapi-script'
 import { ToastContainer, toast } from "react-toastify";
