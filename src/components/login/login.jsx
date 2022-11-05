@@ -7,6 +7,8 @@ export default function Login()
   function responseGoogle(response)
   {
     console.log(response);
+    localStorage.setItem("tokens", JSON.stringify(response));
+    window.location.reload();
   }
 
   return (
