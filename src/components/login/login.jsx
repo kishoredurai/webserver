@@ -3,7 +3,7 @@ import React from 'react';
 import GoogleLogin from 'react-google-login';
 export default function Login()
 {
-
+  //! -----  THIS LOGS USER DETAILS ON GOOGLE LOGIN ----
   function responseGoogle(response)
   {
     console.log(response);
@@ -25,7 +25,7 @@ export default function Login()
             <div className="w-[80%] sm:w-[60%] flex justify-center mt-5 p-3">
               
             <GoogleLogin
-                clientId="852762241490-gr45nghc45rkvjp5bs3uqvr4q0qkp80h.apps.googleusercontent.com"
+                clientId="--- GOOGLES CLIENT ID HERE ---"
                 buttonText="Login"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
