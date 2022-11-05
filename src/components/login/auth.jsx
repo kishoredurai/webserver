@@ -9,7 +9,6 @@ import Login from './login';
 
 export default function Auth()
 {
-    console.log("Here");
     const[isLogged, setLogged] = useState(null);
     
     useEffect(() => {
@@ -18,7 +17,6 @@ export default function Auth()
         else setLogged(true);
     })
 
-    console.log(isLogged);
     if(isLogged === null)
     {
        return <Loader />     
@@ -38,7 +36,7 @@ export default function Auth()
         <Router>
             <section className="flex flex-col items-center justify-center min-h-screen py-2">
                 <SideBar />
-                <section className="mt-5vh md:mt-[8vh] lg:mt-[12vh] w-full">
+                <section className="mt-[8vh] md:mt-[8vh] lg:mt-[12vh] w-full">
                     <Routes>
                         <Route path='/' element={<Frame />} />
                         <Route path="*" element={<Navigate to="/" />} />

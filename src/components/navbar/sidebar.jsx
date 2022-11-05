@@ -7,6 +7,7 @@ import { useEffect } from "react";
 
 export default function SideBar()
 {
+    const imageBasePath = window.location.protocol + "//" + window.location.host + "/images/";
     const [isOpen, setIsOpen] = useState(false);
     const [user, setUser] = useState({});
     
@@ -31,7 +32,7 @@ export default function SideBar()
             <div className="top-0 left-0 shadow-lg absolute z-10 my-bg-lb w-full flex justify-between px-3">
 
                 <div className="lg:w-[6%] w-[12%] p-1">
-                    <img src="./images/logo.png" className="w-full" />
+                    <img src={`${imageBasePath}logo.png`} className="w-full" />
                 </div>
                 
                 <button onClick={() => setIsOpen(!isOpen)} className="">
@@ -42,7 +43,7 @@ export default function SideBar()
             <div className= {`top-0 fixed right-0 bg-white h-screen w-[80vw] lg:w-[20vw] shadow-lg py-10 text-black ${isOpen? "translate-x-0":"translate-x-full"} ease-in-out duration-300`}>
 
             <div className="flex justify-center">
-                <img src="./images/logo.png" className="w-[50%]" />
+                <img src={`${imageBasePath}logo.png`} className="w-[50%]" />
             </div>
             <div className="mt-6 p-3 flex-col justify-center">
                 <p className="p-1 font-bold text-xl">User Details</p>
