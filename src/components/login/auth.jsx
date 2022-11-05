@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
-import Iframe from '../iframe/main';
+import Frame from '../iframe/main';
 import Loader from '../Loader';
 import SideBar from '../navbar/sidebar';
 import Login from './login';
@@ -38,9 +38,10 @@ export default function Auth()
         <Router>
             <section className="flex flex-col items-center justify-center min-h-screen py-2">
                 <SideBar />
-                <section className="p-5 mt-5vh md:mt-[8vh] lg:mt-[12vh] w-full">
+                <section className="mt-5vh md:mt-[8vh] lg:mt-[12vh] w-full">
                     <Routes>
-                        <Route path='/' element={<Iframe />} />
+                        <Route path='/' element={<Frame />} />
+                        <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </section>
             </section>

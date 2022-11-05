@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createRoot} from 'react-dom/client';
 import Auth from './components/login/auth';
-import Login from './components/login/login';
 import "./index.css";
 
 function Main()
 {
+  useEffect(() => {
+    const handleContextmenu = e => {
+        e.preventDefault()
+    }
+    document.addEventListener('contextmenu', handleContextmenu)
+    return function cleanup() {
+        document.removeEventListener('contextmenu', handleContextmenu)
+    }
+}, [ ])
+
   return (
     <Auth />
   )
