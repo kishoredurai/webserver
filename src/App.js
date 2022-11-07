@@ -1,8 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/login/login';
-import { BrowserRouter,Routes,Route } from "react-router-dom";
 
+import "bootstrap/dist/css/bootstrap.min.css"
+import Login from './components/login/Login';
+import { BrowserRouter,Routes,Route } from "react-router-dom";
+import Home from "./components/dashboard/Home";
 function App() {
   return (
     <>
@@ -24,6 +24,9 @@ const routerList = [
     path:"/",
     element:<Login />
   },
-  
+  {
+    path:"/home",
+    element:<Home />
+  },
 ]
 export default App;

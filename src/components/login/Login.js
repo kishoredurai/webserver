@@ -1,10 +1,17 @@
 import React, {  useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { gapi } from 'gapi-script'
+import { useNavigate } from "react-router-dom";
+
+import './Login.css'
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  let navigate = useNavigate();
+  const routeChange = (page) => {
+    navigate(page);
+  };
 
     const notifydanger = () =>
     toast.error("Invalid Email Id !!! contact Administrator", {
@@ -17,7 +24,7 @@ const Login = () => {
     gapi.auth2.getAuthInstance().signOut()
   }
 
-  const clientId ='438729059572-85crmeed3iuolevullovtuboaqhgoh86.apps.googleusercontent.com'
+  const clientId ='852762241490-gr45nghc45rkvjp5bs3uqvr4q0qkp80h.apps.googleusercontent.com'
 
   useEffect(() => {
     const initClient = () => {
@@ -37,6 +44,8 @@ const Login = () => {
     // const myArray = res.profileObj.email.split('.')
     // let a = myArray[1][0] + myArray[1][1]
     // login_check(res.profileObj.email)
+    localStorage.setItem("tokens", JSON.stringify(res));
+    routeChange('/home')
     notifydanger();
     // window.open("https://www.google.com/", "_self");
 
@@ -79,37 +88,27 @@ const login_check = (event) => {
     })
 }
   return  (
-       <>
-      {/* google login */}
-      <div
+      
+     
+
+<div className='login-page'>
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title"><img src='images/bit_cloud_logo.png' width={250}/></h3>
+          <div className="form-group mt-3">
+            <h3 className="Auth-form-title">BIT CLOUD DASHBOARD</h3>
+          </div>
+         
+          <div className="d-grid pt-3 gap-2 mt-3">
+            <div className='card border-primary'>
+            <div
         id="g_id_onload"
-        data-client_id="438729059572-85crmeed3iuolevullovtuboaqhgoh86.apps.googleusercontent.com"
+        data-client_id="852762241490-gr45nghc45rkvjp5bs3uqvr4q0qkp80h.apps.googleusercontent.com"
         data-auto_select="false"
         data-login_uri="http://localhost:3000/"
       ></div>
-
-      {/* Login Code */}
-
-     
-          {/* Google Login Button*/}
-
-      	
-	<div className="limiter">
-		<div className="container-login100">
-			<div className="wrap-login100">
-				<div className="login100-pic js-tilt" data-tilt>
-					<img src="images/img-01.png" alt="IMG"/>
-				</div>
-
-				<form className="login100-form validate-form">
-					<span className="login100-form-title">
-						Students Login
-					</span>
-
-					
-					<div className="container-login100-form-btn">
-						
-                    <GoogleLogin
+            <GoogleLogin
           clientId={clientId}
           buttonText="Sign in with Google"
           onSuccess={onSuccess}
@@ -118,31 +117,22 @@ const login_check = (event) => {
           cookiePolicy={'single_host_origin'}
           isSignedIn={true}
       />
-					</div>
+            </div>
+         
+          </div>
+          <p className="mx-auto pt-5 text-center">
+            powerd by <a style={{color:'red'}}>Cloud Lab</a>
+          </p>
+        </div>
+      </form>
+    </div>
+ 
 
-					<div className="text-center p-t-12">
-						
-						
-					</div>
+    <ToastContainer />
 
-					<div className="text-center p-t-136">
-						
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="../vendor/bootstrap/js/popper.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../vendor/select2/select2.min.js"></script>
-    <script src="../vendor/tilt/tilt.jquery.min.js"></script>
-   
-    
+    </div>
 
-<ToastContainer />
 
-    </>
     
   )
 }
