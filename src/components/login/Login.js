@@ -2,6 +2,7 @@ import React, {  useEffect } from 'react'
 import { GoogleLogin } from 'react-google-login'
 import { gapi } from 'gapi-script'
 import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import './Login.css'
 import { ToastContainer, toast } from "react-toastify";
@@ -39,17 +40,12 @@ const Login = () => {
     
   })
   const onSuccess = (res) => {
-    console.log(res.profileObj)
-    console.log(res.profileObj.email)
-    // const myArray = res.profileObj.email.split('.')
-    // let a = myArray[1][0] + myArray[1][1]
-    // login_check(res.profileObj.email)
+   
     localStorage.setItem("tokens", JSON.stringify(res));
     routeChange('/home')
     notifydanger();
     // window.open("https://www.google.com/", "_self");
 
-    // d=data;
   }
 
   const onFailure = (err) => {
@@ -87,6 +83,11 @@ const login_check = (event) => {
       }
     })
 }
+
+
+
+if (localStorage.getItem("tokens")) return <Navigate to="/home" />;
+
   return  (
       
      

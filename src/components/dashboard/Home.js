@@ -1,15 +1,35 @@
 import React from 'react'
 import Iframe from 'react-iframe';
+import { Navigate } from "react-router-dom";
 
 import 'react-toastify/dist/ReactToastify.css'
 
+
+
 const Home = () => {
+  let openFrame = () => {
+    let iframe = document.createElement("iframe");
+    iframe.src = "https://www.bitsathy.ac.in/embed";
+    iframe.frameBorder = "0";
+    iframe.id = "iframe";
+    iframe.style.position = "absolute";
+    iframe.style.zIndex = "999";
+    iframe.style.height = "100%";
+    iframe.style.width = "100%";
+    iframe.style.top = "0";
+    iframe.style.backgroundColor = "white";
+    iframe.style.border = "none";
+    document.body.prepend(iframe);
+    document.body.style.overflow = "hidden";
+  };
     
+  if (!localStorage.getItem("tokens")) return <Navigate to="/" />;
+
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">
-          <img src="https://www.bitsathy.ac.in/assets/images/logo.png" width="200" height="40" className="d-inline-block align-top"
+        <a className="navbar-brand" >
+          <img src="images/logo.png" width="200" height="40" className="d-inline-block align-top ml-3"
             alt="" />
             </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -34,20 +54,19 @@ const Home = () => {
     </form>
         </div>
       </nav>
-      <div class="container-fluid m-0 p-0">
+      <div className="container-fluid m-0 p-0">
 
-      <div className='videoWrapper' >
-        <Iframe url="https://10.10.237.155:6002"
+      <button onClick={() => openFrame()}>Open IFRAME</button>
+      {/* <div className='videoWrapper' >
+        <Iframe url="https://www.google.com/"
             display="block"
             id="myId"
             width="100%"
             scrolling="auto" 
             height='100%'
             position="absolute"
-            sandbox="allow-popups allow-popups-to-escape-sandbox"
-            allowFullScreen
             />
-    </div>
+    </div> */}
 </div>
   </>
   )
