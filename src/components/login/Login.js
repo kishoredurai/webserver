@@ -52,7 +52,7 @@ const Login = () => {
 const login_check = (event) => {
   // alert(event)
 
-  fetch('http://remote-flask:5000/api/signin', {
+  fetch('http://localhost:5000/api/signin', {
     method: 'POST',
     body: JSON.stringify({
       email: event,
