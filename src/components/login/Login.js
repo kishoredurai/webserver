@@ -114,7 +114,7 @@ const login_check = (event) => {
          
           </div>
           <p className="mx-auto pt-5 text-center">
-            powerd by <a style={{color:'red'}}>Cloud Lab</a>
+            powered by <a style={{color:'red'}}>Cloud Lab</a>
           </p>
         </div>
       </form>
