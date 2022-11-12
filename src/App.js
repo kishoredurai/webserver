@@ -24,6 +24,9 @@ const routerList = [
     path:"/",
     element:<Login />
   },
-  
+  {
+    path:"/home",
+    element:<Home />
+  },
 ]
 export default App;
