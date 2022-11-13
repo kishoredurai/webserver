@@ -44,7 +44,7 @@ const Login = () => {
 
   useEffect(() => {
     const initClient = () => {
-      var auth2 = gapi.auth2.getAuthInstance()
+      gapi.auth2.getAuthInstance()
       gapi.auth2.init({
         clientId: clientId,
         scope: '',
@@ -77,7 +77,9 @@ const Login = () => {
       .then((res) => res.json())
       .then((gdata) => {
         if (gdata) {
+          gdata["email"]=event;
           localStorage.setItem('tokens', JSON.stringify(gdata))
+
           routeChange('/home')
           gapi.auth2.getAuthInstance().signOut()
         } else {
@@ -123,7 +125,7 @@ const Login = () => {
               </div>
             </div>
             <p className="mx-auto pt-5 text-center">
-              powered by <a style={{ color: 'red' }}>Cloud Lab</a>
+              powered by <a style={{ color: 'red' }} href="/">Cloud Lab</a>
             </p>
           </div>
         </form>
