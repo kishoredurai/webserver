@@ -76,7 +76,11 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((gdata) => {
-        if (gdata) {
+        if(gdata == null)
+        {
+          notifydanger()
+        }
+        else if (gdata) {
           gdata["email"]=event;
           localStorage.setItem('tokens', JSON.stringify(gdata))
 
